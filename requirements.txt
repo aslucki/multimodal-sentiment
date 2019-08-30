@@ -1,0 +1,12 @@
+av==0.4.1
+flake8==3.5.0
+h5py==2.8.0
+jupyterlab==0.35.6
+numpy==1.17.1
+tensorflow-gpu==2.0.0-rc0
+opencv-python==4.1.0.25
+pandas==0.24.0
+Pillow==5.2.0
+pytest==3.7.2
+scipy==1.1.0
+setuptools==41.2.0
