@@ -12,8 +12,16 @@ dev:
 
 lab:
 	docker run --rm -ti  \
-	    -p $(PORT):$(PORT) \
+		-p $(PORT):$(PORT) \
 		-v $(PWD)/:/project \
 		-w '/project' \
 		$(IMAGE_NAME) \
 		jupyter lab --ip=0.0.0.0 --port=$(PORT) --allow-root --no-browser
+
+test:
+	docker run --rm -ti  \
+		-p $(PORT):$(PORT) \
+		-v $(PWD)/:/project \
+		-w '/project' \
+		$(IMAGE_NAME) \
+		python3 -m pytest tests/ -s
