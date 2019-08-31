@@ -1,0 +1,12 @@
+*.h5
+*.hdf5
+*.bin
+*.zip
+*.tar
+*.tar.xz
+tests
+data
+data/raw
+data/processed
+models
+.git
