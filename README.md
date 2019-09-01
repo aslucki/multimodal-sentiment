@@ -38,6 +38,8 @@ Features are dictionaries serialized using pickle. The structure is as follows:
 ```
 
 ### Features types
-Currently we extra
+1. Resnet50 features from videos keyframes (single averaged vector)
+2. C3D features from all video frames (singe averaged vector)
+3. FastText features from videos titles (single averaged vector)
 
 
