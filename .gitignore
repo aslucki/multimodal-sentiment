@@ -4,3 +4,5 @@ __pycache__
 .pytest_cache
 crawl-300d-2M-subword.zip
 *.bin
+yt_videos
+*.egg-info

@@ -1,0 +1,9 @@
+# FEATURE EXTRACTION
+resnet_model_path: /project/models/resnet50_pool5.h5
+c3d_model_path: /project/models/C3D_fc6.h5
+fasttext_model_path: /project/models/crawl-300d-2M-subword.bin
+videos_paths: /project/data/raw/yt_videos
+videos_metadata_path: /project/data/raw/videos_metadata.json
+comments_file_path: /project/data/raw/dataset.jsonl
+output_dir: /project/data/processed
+output_file_prefix: features # the current date will be appended to the file name
