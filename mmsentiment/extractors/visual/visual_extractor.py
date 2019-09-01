@@ -26,6 +26,7 @@ class VisualExtractor(Extractor):
         all_frames = []
         keyframes = []
         for frame in container.decode(stream):
+
             img = frame.to_image()
 
             if image_size:

@@ -23,6 +23,12 @@ def parse_arguments():
     parser = argparse.ArgumentParser()
     parser.add_argument("--config_file", help="Path to the config file",
                         required=True)
+    parser.add_argument("--extract_resnet",
+                        action="store_true")
+    parser.add_argument("--extract_c3d",
+                        action="store_true")
+    parser.add_argument("--extract_fasttext",
+                        action="store_true")
     return parser.parse_args()
 
 
@@ -71,6 +77,9 @@ def extract_resnet(videos_paths, resnet_model_path, output_file_prefix, output_d
     save_file(resnet_features, output_file_prefix, 'resnet',
               output_dir)
 
+    del resnet_model
+    del resnet_features
+
 
 def extract_c3d(videos_paths, c3d_model_path, output_file_prefix, output_dir):
     print("Extracting c3d features")
@@ -80,6 +89,9 @@ def extract_c3d(videos_paths, c3d_model_path, output_file_prefix, output_dir):
     c3d_features = extract_visual_features(c3d_extractor, videos_paths)
     save_file(c3d_features, output_file_prefix, 'c3d',
               output_dir)
+
+    del c3d_model
+    del c3d_features
 
 
 def extract_fasttext_metadata(metadata_file_path, fasttext_model_path,
@@ -97,6 +109,9 @@ def extract_fasttext_metadata(metadata_file_path, fasttext_model_path,
     fasttext_features = extract_textual_features(fasttext_extractor, titles)
     save_file(fasttext_features, output_file_prefix, 'fasttext_titles', output_dir)
 
+    del fasttext_model
+    del fasttext_features
+
 
 def main():
     args = parse_arguments()
@@ -105,16 +120,19 @@ def main():
         config = yaml.load(f)
 
     videos_paths = [os.path.join(config['videos_paths'], filename)
-                    for filename in os.listdir(config['videos_paths'])][:1]
+                    for filename in os.listdir(config['videos_paths'])]
 
-    extract_resnet(videos_paths, config['resnet_model_path'], config['output_file_prefix'],
-                   config['output_dir'])
+    if args.extract_resnet:
+        extract_resnet(videos_paths, config['resnet_model_path'], config['output_file_prefix'],
+                       config['output_dir'])
 
-    extract_c3d(videos_paths, config['c3d_model_path'], config['output_file_prefix'],
-                config['output_dir'])
+    if args.extract_c3d:
+        extract_c3d(videos_paths, config['c3d_model_path'], config['output_file_prefix'],
+                    config['output_dir'])
 
-    extract_fasttext_metadata(config['videos_metadata_path'], config['fasttext_model_path'],
-                              config['output_file_prefix'], config['output_dir'])
+    if args.extract_fasttext:
+        extract_fasttext_metadata(config['videos_metadata_path'], config['fasttext_model_path'],
+                                  config['output_file_prefix'], config['output_dir'])
 
 
 if __name__ == "__main__":

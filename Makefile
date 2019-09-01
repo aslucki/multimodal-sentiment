@@ -6,6 +6,7 @@ build:
 
 dev:
 	docker run --rm -ti  \
+		--runtime=nvidia \
 		-v $(PWD)/:/project \
 		-w '/project' \
 		$(IMAGE_NAME)
