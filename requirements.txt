@@ -3,7 +3,7 @@ fasttext==0.9.1
 flake8==3.5.0
 h5py==2.8.0
 jupyterlab==0.35.6
-numpy==1.17.1
+numpy==1.22.0
 tensorflow-gpu==2.0.0-rc0
 opencv-python==4.1.0.25
 pandas==0.24.0
